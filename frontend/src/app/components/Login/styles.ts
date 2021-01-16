@@ -1,32 +1,47 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import styled from 'styled-components/native';
+import {theme} from '../../styles/theme';
 
-import {Animated, Dimensions} from 'react-native';
-
-// const windowWitdh = Dimensions.get('window').width;
+const windowWitdh = Dimensions.get('window').width;
 
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-end;
-  /* background: red; */
 `;
 
-// export const BackgroundImage = styled(Animated.Image)`
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-// `;
+export const CreateAccountButton = styled.TouchableOpacity`
+  margin-bottom: 40px;
+  margin-top: 20px;
+`;
+
+export const CreateAccountText = styled.Text`
+  color: ${theme.colors.PrimaryTextColor};
+  text-align: center;
+`;
 
 export const styles = StyleSheet.create({
-  AnimatedImage: {
-    width: '100%',
-    height: '100%',
+  ViewBackgroundImage: {
     position: 'absolute',
-    backgroundColor: 'red',
+  },
+  Svg: {
+    marginBottom: -30,
+  },
+  ButtonClose: {
+    height: 40,
+    width: 40,
+    backgroundColor: theme.colors.backgroundColor,
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 250,
+    left: windowWitdh / 2 - 20,
+    shadowColor: theme.colors.shadowColor,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    elevation: 5,
   },
 });
-
-export const BackgroundImage = styled.Image`
-  height: 100%;
-  width: 100%;
-`;

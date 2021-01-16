@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
-import bg from './assets/bg.jpg';
-import ButtonLogin from '../../shared/Button';
-
-import {Container, styles, BackgroundImage} from './styles';
 import Animated, {Easing} from 'react-native-reanimated';
-// import {Image, View} from 'react-native';
 import SGV, {Image, Circle, ClipPath} from 'react-native-svg';
 import {Dimensions} from 'react-native';
+
+import ButtonLogin from '../../shared/Button';
+import bg from './assets/bg.jpg';
+import {
+  Container,
+  styles,
+  CreateAccountButton,
+  CreateAccountText,
+} from './styles';
+import {TapGestureHandler} from 'react-native-gesture-handler';
 
 const windowWitdh = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -22,19 +27,27 @@ const Login: React.FC = () => {
     }).start();
   };
 
+  const onClickCloseButton = () => {
+    Animated.timing(heightImage, {
+      toValue: 0,
+      duration: 500,
+      easing: Easing.linear,
+    }).start();
+  };
+
   return (
     <>
       <Animated.View
         style={[
+          styles.ViewBackgroundImage,
           {
-            position: 'absolute',
             bottom: heightImage,
           },
         ]}>
         <SGV
-          style={{marginBottom: -30}}
+          style={styles.Svg}
           height={windowHeight + 50}
-          width={windowWitdh + 5}>
+          width={windowWitdh + 2}>
           <ClipPath id="clip">
             <Circle r={windowHeight + 50} cx={windowWitdh / 2} />
           </ClipPath>
@@ -46,10 +59,31 @@ const Login: React.FC = () => {
             clipPath="url(#clip)"
           />
         </SGV>
-        {/* <BackgroundImage source={bg} /> */}
       </Animated.View>
       <Container>
+        <TapGestureHandler onHandlerStateChange={onClickCloseButton}>
+          <Animated.View
+            style={[
+              styles.ButtonClose,
+              {
+                opacity: heightImage.interpolate({
+                  inputRange: [0, 300],
+                  outputRange: [0, 1],
+                }),
+              },
+            ]}>
+            <Animated.Text
+              style={{
+                fontSize: 15,
+              }}>
+              X
+            </Animated.Text>
+          </Animated.View>
+        </TapGestureHandler>
         <ButtonLogin onClick={() => stratAnimation()}>Login</ButtonLogin>
+        <CreateAccountButton onPress={() => console.log('criar conta')}>
+          <CreateAccountText>Ainda não possui uma conta?</CreateAccountText>
+        </CreateAccountButton>
       </Container>
     </>
   );

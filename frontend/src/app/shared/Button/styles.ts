@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
+import {theme} from '../../styles/theme';
 
 export const Button = styled.TouchableOpacity`
-  background: #0984e3;
+  background: ${theme.colors.PrimaryButton.color};
   align-items: center;
   justify-content: center;
   width: 90%;
