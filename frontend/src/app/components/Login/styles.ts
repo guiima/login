@@ -14,6 +14,15 @@ export const CreateAccountButton = styled.TouchableOpacity`
   margin-top: 20px;
 `;
 
+export const TesteButton = styled.TouchableOpacity`
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const CreateAccountText = styled.Text`
   color: ${theme.colors.PrimaryTextColor};
   text-align: center;
@@ -31,8 +40,6 @@ export const styles = StyleSheet.create({
     width: 40,
     backgroundColor: theme.colors.backgroundColor,
     borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
     position: 'absolute',
     bottom: 250,
     left: windowWitdh / 2 - 20,

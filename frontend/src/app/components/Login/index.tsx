@@ -10,6 +10,7 @@ import {
   styles,
   CreateAccountButton,
   CreateAccountText,
+  TesteButton,
 } from './styles';
 import {TapGestureHandler} from 'react-native-gesture-handler';
 
@@ -61,25 +62,25 @@ const Login: React.FC = () => {
         </SGV>
       </Animated.View>
       <Container>
-        <TapGestureHandler onHandlerStateChange={onClickCloseButton}>
-          <Animated.View
-            style={[
-              styles.ButtonClose,
-              {
-                opacity: heightImage.interpolate({
-                  inputRange: [0, 300],
-                  outputRange: [0, 1],
-                }),
-              },
-            ]}>
+        <Animated.View
+          style={[
+            styles.ButtonClose,
+            {
+              opacity: heightImage.interpolate({
+                inputRange: [0, 300],
+                outputRange: [0, 1],
+              }),
+            },
+          ]}>
+          <TesteButton onPress={() => onClickCloseButton()}>
             <Animated.Text
               style={{
                 fontSize: 15,
               }}>
               X
             </Animated.Text>
-          </Animated.View>
-        </TapGestureHandler>
+          </TesteButton>
+        </Animated.View>
         <ButtonLogin onClick={() => stratAnimation()}>Login</ButtonLogin>
         <CreateAccountButton onPress={() => console.log('criar conta')}>
           <CreateAccountText>Ainda não possui uma conta?</CreateAccountText>
