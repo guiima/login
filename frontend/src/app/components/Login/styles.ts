@@ -3,8 +3,14 @@ import styled from 'styled-components/native';
 import {theme} from '../../styles/theme';
 
 const windowWitdh = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export const Container = styled.View`
+  background: ${theme.colors.backgroundColor};
+  flex: 1;
+`;
+
+export const Content = styled.View`
   flex: 1;
   justify-content: flex-end;
 `;
@@ -14,7 +20,7 @@ export const CreateAccountButton = styled.TouchableOpacity`
   margin-top: 20px;
 `;
 
-export const TesteButton = styled.TouchableOpacity`
+export const ButtonClose = styled.TouchableOpacity`
   position: absolute;
   height: 40px;
   width: 40px;
@@ -24,8 +30,13 @@ export const TesteButton = styled.TouchableOpacity`
 `;
 
 export const CreateAccountText = styled.Text`
-  color: ${theme.colors.PrimaryTextColor};
+  color: ${theme.colors.primaryTextColor};
   text-align: center;
+`;
+
+export const ContentForm = styled.View`
+  flex: 1;
+  justify-content: flex-end;
 `;
 
 export const styles = StyleSheet.create({
@@ -50,5 +61,11 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     elevation: 5,
+  },
+  FormContent: {
+    height: 200,
+    width: '100%',
+    position: 'absolute',
+    zIndex: -1,
   },
 });

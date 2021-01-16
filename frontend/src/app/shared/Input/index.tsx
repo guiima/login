@@ -1,14 +1,14 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-// import { Container } from './styles';
+import {Container, TextInput} from './styles';
 
-const Input: React.FC = () => {
-  return (
-    <View>
-      <Text>input</Text>
-    </View>
-  );
+interface InputProps {
+  placeholder: string;
+}
+
+const Input: React.FC<InputProps> = ({placeholder}) => {
+  return <TextInput placeholder={placeholder} />;
 };
 
 export default Input;

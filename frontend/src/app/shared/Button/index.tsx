@@ -5,15 +5,17 @@ import {Button, TextButton} from './styles';
 
 interface ButtonComponentProps {
   onClick: () => void;
+  type?: string;
 }
 
 const ButtonComponent: React.FC<ButtonComponentProps> = ({
   onClick,
   children,
+  type,
 }) => {
   return (
-    <Button onPress={() => onClick()}>
-      <TextButton>{children}</TextButton>
+    <Button type={type} onPress={() => onClick()}>
+      <TextButton type={type}>{children}</TextButton>
     </Button>
   );
 };

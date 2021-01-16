@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import Animated, {Easing} from 'react-native-reanimated';
 import SGV, {Image, Circle, ClipPath} from 'react-native-svg';
-import {Dimensions} from 'react-native';
+import {Dimensions, Keyboard} from 'react-native';
 
 import ButtonLogin from '../../shared/Button';
 import bg from './assets/bg.jpg';
+import FormLogin from './components/FormLogin';
 import {
   Container,
   styles,
   CreateAccountButton,
   CreateAccountText,
-  TesteButton,
+  ButtonClose,
+  Content,
+  ContentForm,
 } from './styles';
-import {TapGestureHandler} from 'react-native-gesture-handler';
 
 const windowWitdh = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -29,6 +31,7 @@ const Login: React.FC = () => {
   };
 
   const onClickCloseButton = () => {
+    Keyboard.dismiss();
     Animated.timing(heightImage, {
       toValue: 0,
       duration: 500,
@@ -36,8 +39,18 @@ const Login: React.FC = () => {
     }).start();
   };
 
+  const hideToShow = heightImage.interpolate({
+    inputRange: [0, 300],
+    outputRange: [0, 1],
+  });
+
+  const showToHide = heightImage.interpolate({
+    inputRange: [0, 300],
+    outputRange: [1, 0],
+  });
+
   return (
-    <>
+    <Container>
       <Animated.View
         style={[
           styles.ViewBackgroundImage,
@@ -61,32 +74,48 @@ const Login: React.FC = () => {
           />
         </SGV>
       </Animated.View>
-      <Container>
+      <Content>
         <Animated.View
           style={[
             styles.ButtonClose,
             {
-              opacity: heightImage.interpolate({
-                inputRange: [0, 300],
-                outputRange: [0, 1],
-              }),
+              opacity: hideToShow,
             },
           ]}>
-          <TesteButton onPress={() => onClickCloseButton()}>
+          <ButtonClose onPress={() => onClickCloseButton()}>
             <Animated.Text
               style={{
                 fontSize: 15,
               }}>
               X
             </Animated.Text>
-          </TesteButton>
+          </ButtonClose>
         </Animated.View>
-        <ButtonLogin onClick={() => stratAnimation()}>Login</ButtonLogin>
-        <CreateAccountButton onPress={() => console.log('criar conta')}>
-          <CreateAccountText>Ainda não possui uma conta?</CreateAccountText>
-        </CreateAccountButton>
-      </Container>
-    </>
+
+        <Animated.View
+          style={[
+            {
+              opacity: showToHide,
+              top: heightImage,
+            },
+          ]}>
+          <ButtonLogin onClick={() => stratAnimation()}>LOGIN</ButtonLogin>
+          <CreateAccountButton onPress={() => console.log('criar conta')}>
+            <CreateAccountText>Ainda não possui uma conta?</CreateAccountText>
+          </CreateAccountButton>
+        </Animated.View>
+        <Animated.View
+          style={[
+            styles.FormContent,
+            {
+              opacity: hideToShow,
+            },
+          ]}>
+          <FormLogin />
+        </Animated.View>
+      </Content>
+    </Container>
   );
 };
+
 export default Login;
