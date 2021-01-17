@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import {StyleSheet} from 'react-native';
+
 import {theme} from '../../styles/theme';
 
 export const Container = styled.View`
@@ -20,3 +22,10 @@ interface ContentInputProps {
 export const ContentInput = styled.View`
   margin-bottom: ${(props: ContentInputProps) => props.marginBottom}%;
 `;
+
+export const styles = StyleSheet.create({
+  AnimatedView: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
