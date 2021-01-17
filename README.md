@@ -13,7 +13,7 @@ Foi utilizado algumas animação no app para que o usuário tenha uma melhor exp
 
 Após clonado o repositório em sua maquina, vá até a pasta raiz do projeto.
 
-Em seguida insira o comando:
+Em seguida vá para o diretório 'backend' através do seguinte comando:
 
 ###### `cd backend`
 
@@ -23,11 +23,13 @@ e
 
 Esse comando irá iniciar a api fake no localhost porta 3333
 
-Então insira o comando
+Abra uma nova aba do terminal e vá para o diretório 'frontend' utilizando o seguinte comando:
 
-###### `cd ../frontend`
+###### `cd frontend`
 
-Execute o seguinte comando para instalar as dependências
+obs: esse comando só irá funcionar caso você esteja no diretório raiz do projeto, caso contrário, dirija-se ao diretório raiz e execute o comando anterior
+
+Então execute o seguinte comando para instalar as dependências
 
 ###### `yarn`
 
