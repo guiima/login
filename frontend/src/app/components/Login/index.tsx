@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Animated, {Easing} from 'react-native-reanimated';
 import SGV, {Image, Circle, ClipPath} from 'react-native-svg';
 import {Dimensions, Keyboard} from 'react-native';
+import {NavigationContainerRef} from '@react-navigation/native';
 
 import ButtonLogin from '../../shared/Button';
 import bg from './assets/bg.jpg';
@@ -13,13 +14,16 @@ import {
   CreateAccountText,
   ButtonClose,
   Content,
-  ContentForm,
 } from './styles';
 
 const windowWitdh = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const Login: React.FC = () => {
+interface LoginProps {
+  navigation: NavigationContainerRef;
+}
+
+const Login: React.FC<LoginProps> = ({navigation}) => {
   const [heightImage] = useState(new Animated.Value(0));
 
   const stratAnimation = () => {
@@ -100,8 +104,8 @@ const Login: React.FC = () => {
             },
           ]}>
           <ButtonLogin onClick={() => stratAnimation()}>LOGIN</ButtonLogin>
-          <CreateAccountButton onPress={() => console.log('criar conta')}>
-            <CreateAccountText>Ainda não possui uma conta?</CreateAccountText>
+          <CreateAccountButton onPress={() => navigation.navigate('Register')}>
+            <CreateAccountText>Criar nova conta</CreateAccountText>
           </CreateAccountButton>
         </Animated.View>
         <Animated.View

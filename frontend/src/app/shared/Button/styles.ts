@@ -31,4 +31,5 @@ export const TextButton = styled.Text`
       ? theme.colors.secondaryTextColor
       : theme.colors.primaryTextColor};
   font-weight: bold;
+  letter-spacing: 1px;
 `;

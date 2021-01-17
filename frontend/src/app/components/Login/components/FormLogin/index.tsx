@@ -10,7 +10,7 @@ import Animated from 'react-native-reanimated';
 const FormLogin: React.FC = () => {
   return (
     <Container>
-      <Input placeholder="Login" />
+      <Input placeholder="login" />
       <Input placeholder="senha" />
       <Button type="secondary" onClick={() => console.log('loguei')}>
         ENTRAR

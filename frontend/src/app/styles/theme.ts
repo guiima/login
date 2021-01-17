@@ -22,6 +22,11 @@ const colors = {
   textInput: {
     borderColor: constants.lightGray,
   },
+
+  header: {
+    borderColor: constants.lightGray,
+    color: constants.mediumGray,
+  },
 };
 
 export const theme = {
