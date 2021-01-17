@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import {Text, View} from 'react-native';
+import {Alert, View} from 'react-native';
 import {NavigationContainerRef} from '@react-navigation/native';
 import Header from '../../shared/Header';
 import Input from '../../shared/Input';
 import Button from '../../shared/Button';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
-import {createUser, ListUsers} from '../../services/requests/user';
+import {createUser} from '../../services/requests/user';
 
 import {Container, ContentInput, Error} from './styles';
 
@@ -40,15 +40,22 @@ const Register: React.FC<RegisterProps> = ({navigation}) => {
   });
 
   const handleSubmit = async (values: FomrProps) => {
-    console.log('subimitei', values);
-    const abc = await createUser(values.login, values.password)
-      .then((response) => {
-        console.log('foi');
-      })
-      .catch((err) => {
-        console.log('err', err);
-      });
-    console.log('abc', abc);
+    if (values.password === values.confirmPassword) {
+      createUser(values.login, values.password)
+        .then((response) => {
+          console.log('foi', response);
+          if (response) {
+            Alert.alert('Conta criada com sucesso!');
+            navigation.navigate('Login');
+          }
+        })
+        .catch((err) => {
+          console.log('err', err);
+          Alert.alert('Erro ao criar com sucesso!');
+        });
+    } else {
+      Alert.alert('Por favor, insira duas senhas iguais!');
+    }
   };
 
   return (

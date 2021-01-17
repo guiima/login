@@ -115,7 +115,7 @@ const Login: React.FC<LoginProps> = ({navigation}) => {
               opacity: hideToShow,
             },
           ]}>
-          <FormLogin />
+          <FormLogin navigation={navigation} />
         </Animated.View>
       </Content>
     </Container>
