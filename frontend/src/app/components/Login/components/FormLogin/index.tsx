@@ -19,7 +19,6 @@ const FormLogin: React.FC<FormloginProps> = ({navigation}) => {
   const authentication = async () => {
     auth(login, password)
       .then((response) => {
-        Alert.alert('login sucess');
         setLogin('');
         setPassword('');
         navigation.navigate('Home');
