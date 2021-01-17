@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import {theme} from '../../styles/theme';
 
 const windowWitdh = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 export const Container = styled.View`
   background: ${theme.colors.backgroundColor};
@@ -32,11 +31,6 @@ export const ButtonClose = styled.TouchableOpacity`
 export const CreateAccountText = styled.Text`
   color: ${theme.colors.primaryTextColor};
   text-align: center;
-`;
-
-export const ContentForm = styled.View`
-  flex: 1;
-  justify-content: flex-end;
 `;
 
 export const styles = StyleSheet.create({

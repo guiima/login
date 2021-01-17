@@ -62,7 +62,6 @@ const Register: React.FC<RegisterProps> = ({navigation}) => {
     if (values.password === values.confirmPassword) {
       createUser(values.login, values.password)
         .then((response) => {
-          console.log('foi', response);
           if (response) {
             stratAnimation();
             if (animationRef) {
@@ -76,8 +75,7 @@ const Register: React.FC<RegisterProps> = ({navigation}) => {
           }
         })
         .catch((err) => {
-          console.log('err', err);
-          Alert.alert('Erro ao criar com sucesso!');
+          Alert.alert('Erro ao criar nova conta!');
         });
     } else {
       Alert.alert('Por favor, insira duas senhas iguais!');

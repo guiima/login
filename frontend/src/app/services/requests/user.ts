@@ -10,9 +10,3 @@ export const createUser = async (login: string, password: string) => {
       throw err;
     });
 };
-
-// export const ListUsers = async () => {
-//   console.log('cheguei');
-//   const resp = await api.get('/users');
-//   console.log('rrrrrrrrreso', resp);
-// };
