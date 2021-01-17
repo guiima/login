@@ -5,6 +5,8 @@ const colors = {
 
   secondaryTextColor: constants.black,
 
+  textError: constants.red,
+
   backgroundColor: constants.white,
 
   shadowColor: constants.blue,
