@@ -6,19 +6,20 @@ import Input from '../../shared/Input';
 import Button from '../../shared/Button';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
+import {createUser, ListUsers} from '../../services/requests/user';
 
 import {Container, ContentInput, Error} from './styles';
 
 const FormSchema = Yup.object().shape({
   login: Yup.string()
     .required('Insira um login')
-    .min(4, 'O login deve ter ao menos 4 digitos!'),
+    .min(4, 'O login deve ter ao menos 4 caracteres!'),
   password: Yup.string()
     .required('Insira um login')
-    .min(6, 'A senha deve conter ao menos 6 caracteres!'),
+    .min(6, 'A senha deve ter ao menos 6 caracteres!'),
   confirmPassword: Yup.string()
     .required('Insira um login')
-    .min(6, 'A senha deve conter ao menos 6 caracteres!'),
+    .min(6, 'A senha deve ter ao menos 6 caracteres!'),
 });
 
 interface FomrProps {
@@ -38,8 +39,16 @@ const Register: React.FC<RegisterProps> = ({navigation}) => {
     confirmPassword: '',
   });
 
-  const handleSubmit = (values: FomrProps) => {
+  const handleSubmit = async (values: FomrProps) => {
     console.log('subimitei', values);
+    const abc = await createUser(values.login, values.password)
+      .then((response) => {
+        console.log('foi');
+      })
+      .catch((err) => {
+        console.log('err', err);
+      });
+    console.log('abc', abc);
   };
 
   return (
@@ -84,7 +93,6 @@ const Register: React.FC<RegisterProps> = ({navigation}) => {
                   <Error>{errors.confirmPassword}</Error>
                 ) : null}
               </ContentInput>
-
               <Button type="secondary" onClick={handleSubmit}>
                 SALVAR
               </Button>
