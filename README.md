@@ -31,7 +31,7 @@ Execute o seguinte comando para instalar as dependências
 
 ###### `yarn`
 
-Após finalizar a instalação de todas as depêndencias, rode o comando:
+Após finalizar a instalação de todas as dependências, rode o comando:
 
 ###### `yarn android`
 
